@@ -3,8 +3,6 @@ import bodyParser from 'body-parser'
 import interpretsMessage from './src/functions/interpretsMessage'
 import cron from 'node-cron'
 import { checkAndSendReminder } from './src/functions/checkAndSendReminder'
-import removeAppointments from './src/functions/removeAppointments'
-import createAppointment from './src/functions/createAppointment'
 
 // Inicializa o express e define uma porta
 const app = express()
@@ -24,7 +22,6 @@ app.post('/hook', (req: Request, res: Response) => {
 
 cron.schedule('* * * * *', () => {
 	checkAndSendReminder()
-	// console.log('Executando a tarefa a cada 1 minuto')
 })
 
 // Inicia o express na porta definida anteriormente
